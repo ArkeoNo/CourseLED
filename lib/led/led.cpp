@@ -14,10 +14,10 @@ void initLeds(void) {
 
 void affichageJeu(struct player players[NB_JOUEURS_MAX], int boosts[NOMBRE_BOOST]) {
     FastLED.clear();
-    for (int i = 0; i < NB_JOUEURS_MAX; i++) {
+    for (int i = 0; i < NB_JOUEURS_MAX; i++) { // Affichage des joueurs
         leds[players[i].pos] = COULEURS[players[i].id];
     }
-    for (int i = 0; i < NOMBRE_BOOST; i++) {
+    for (int i = 0; i < NOMBRE_BOOST; i++) { // Affichage des boosts
         leds[boosts[i]] = COULEUR_BOOST;
     }
     FastLED.show();

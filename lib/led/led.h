@@ -4,11 +4,11 @@
 #include <FastLED.h>
 #include "game.h"
 
-#define DATA_PIN 6	 // Pin du bandeau LED
-#define NUM_LEDS 153 // Nombre de LED du bandeau 153
+#define DATA_PIN 6	    // Pin du bandeau LED
+#define NUM_LEDS 153    // Nombre de LED du bandeau 153
 
-const CRGB COULEURS[] = {CRGB::Blue, CRGB::Yellow, CRGB::Red}; // Couleurs des joueurs
-const CRGB COULEUR_BOOST = CRGB::Magenta;					     // Couleur des boosts
+const CRGB COULEURS[] = {CRGB::Blue, CRGB::Yellow, CRGB::Red};      // Couleurs des joueurs dans l'ordre des joueurs
+const CRGB COULEUR_BOOST = CRGB::Magenta;					        // Couleur des boosts
 
 /**
  * @brief Initialise les LEDs.

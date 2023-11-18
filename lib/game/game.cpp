@@ -57,6 +57,8 @@ void use_boost(player *joueur, int boosts[NOMBRE_BOOST], player players[NB_JOUEU
             for(int j = 0; j < PUISSANCE_BOOST; j++){
                 joueur->pos++;
                 affichageJeu(players, boosts);
+                tone(PIN_BUZZER, musique_boost[j], 50);
+                delay(50);
             }
         boosts[i] = random(0, NUM_LEDS);
         }

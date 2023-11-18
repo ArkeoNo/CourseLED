@@ -18,14 +18,11 @@ void setup() {
   // delay(1000);
   // noTone(PIN_BUZZER);
 
-  delay(100);
-  tone(PIN_BUZZER, 349, 200);
-  delay(200);
-  tone(PIN_BUZZER, 392, 200);
-  delay(200);
-  tone(PIN_BUZZER, 440, 200);
-  delay(200);
-  noTone(8);
+pinMode(PIN_BUZZER, OUTPUT);
+  for(int i = 0; i < 3; i++){
+    tone(PIN_BUZZER, musique_demarrage[i], 200);
+    delay(200);
+  }
 
   
   /*Initialisation du jeu*/
