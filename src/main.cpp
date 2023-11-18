@@ -1,18 +1,39 @@
 #include <Arduino.h>
+#include <FastLED.h>
+#include "led.h"
+#include "game.h"
 
-// put function declarations here:
-int myFunction(int, int);
+struct player players[NB_JOUEURS_MAX];
+CRGB leds[NUM_LEDS];
+
+CRGB * ptr_leds = &leds[0];
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(9600);//  init communication via port usb
+  Serial.println("Initialisation du jeu");
+
+  /*Initialisation du jeu*/
+
+  // Initialisation des joueurs
+  for(int i = 0; i < NB_JOUEURS_MAX; i++){
+    if(init_joueur(&players[i], i, 0, 0));
+    else Serial.println("Erreur lors de l'initialisation du joueur");
+  }
+
+  // Initialisation des leds
+  initLeds();
+
+
+}
+
+void miseAJourLeds() {
+  FastLED.clear();  // Efface toutes les leds
+  for(int i = 0; i < NB_JOUEURS_MAX; i++) {
+    allumerLedJoueur(&players[i]);
+  }
+  FastLED.show();	 // Affiche les leds
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  miseAJourLeds();
 }
