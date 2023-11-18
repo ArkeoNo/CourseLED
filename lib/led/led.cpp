@@ -1,4 +1,5 @@
 #include "led.h"
+#include "game.h"
 #include <FastLED.h>
 
 CRGB leds[NUM_LEDS];
@@ -10,6 +11,9 @@ void initLeds() {
     FastLED.show();
 }
 
-void allumerLedJoueur(struct player* ptr_player) {
-   leds[ptr_player->pos] = COULEURS[ptr_player->num];  // Allume la led du joueur
+void allumerLedJoueurs(struct player players[NB_JOUEURS_MAX]) {
+    for (int i = 0; i < NB_JOUEURS_MAX; i++) {
+        leds[players[i].pos] = COULEURS[players[i].id];
+    }
+    FastLED.show();
 }

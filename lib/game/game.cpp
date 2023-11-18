@@ -11,8 +11,8 @@ bool init_joueur(struct player *joueur, int id, int pos, int lap){
 
 void button_pressed(void){
     digitalWrite(LED_BUILTIN, CHANGE);
-    while(digitalRead(INTERUPT_PIN) == HIGH); // Moyen moyen en vrai mais bon
-    
+    while(digitalRead(INTERUPT_PIN) == HIGH); // Moyen moyen en vrai mais bon => Ajouter un "ou si 100ms écoulées"
+
 }
 
 bool init_button(void){

@@ -4,9 +4,6 @@
 #include "game.h"
 
 struct player players[NB_JOUEURS_MAX];
-CRGB leds[NUM_LEDS];
-
-CRGB * ptr_leds = &leds[0];
 
 void setup() {
   Serial.begin(9600);//  init communication via port usb
@@ -26,14 +23,7 @@ void setup() {
 
 }
 
-void miseAJourLeds() {
-  FastLED.clear();  // Efface toutes les leds
-  for(int i = 0; i < NB_JOUEURS_MAX; i++) {
-    allumerLedJoueur(&players[i]);
-  }
-  FastLED.show();	 // Affiche les leds
-}
 
 void loop() {
-  miseAJourLeds();
+  allumerLedJoueurs(players);
 }
