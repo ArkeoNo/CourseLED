@@ -9,15 +9,15 @@ bool init_joueur(struct player *joueur, int id, int pos, int lap){
     return true;
 }
 
-void button_pressed(void){
-    digitalWrite(LED_BUILTIN, CHANGE);
-    while(digitalRead(INTERUPT_PIN) == HIGH); // Moyen moyen en vrai mais bon => Ajouter un "ou si 100ms écoulées"
-
+void init_button(void){
+    for(int i = 0; i < NB_JOUEURS_MAX; i++){
+        pinMode(PIN_BP[i], INPUT_PULLUP);
+    }
 }
 
-bool init_button(void){
-    pinMode(INTERUPT_PIN, INPUT_PULLUP);
-    attachInterrupt(digitalPinToInterrupt(INTERUPT_PIN), button_pressed, RISING);
-    return true;
+void button_pressed(int bp[NB_JOUEURS_MAX]){
+    for(int i = 0; i < NB_JOUEURS_MAX; i++){
+        bp[i] = digitalRead(PIN_BP[i]);
+    }
 }
 

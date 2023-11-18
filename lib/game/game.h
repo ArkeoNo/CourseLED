@@ -7,7 +7,7 @@
 #define NOMBRE_TOURS 3
 #define NB_JOUEURS_MAX 3
 
-#define INTERUPT_PIN 2
+const int PIN_BP[] {2, 3, 4}; // Pins des bouttons
 
 /**
  * @struct player
@@ -34,14 +34,12 @@ bool init_joueur(struct player *joueur, int id, int pos, int lap);
 
 /**
  * @brief Initialise l'interruption sur les bouttons.
- * 
- * @return true si l'initialisation est réussie, false sinon.
  */
-bool init_button(void);
+void init_button(void);
 
 /**
  * @brief Routine d'interruption des bouttons.
  */
-void button_pressed(void);
+void button_pressed(int *bp);
 
 #endif
