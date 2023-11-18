@@ -5,9 +5,10 @@
 #include "game.h"
 
 #define DATA_PIN 6	 // Pin du bandeau LED
-#define NUM_LEDS 153 // Nombre de LED du bandeau
+#define NUM_LEDS 153 // Nombre de LED du bandeau 153
 
-const CRGB COULEURS[] = {CRGB::Blue, CRGB::Yellow, CRGB::Red};
+const CRGB COULEURS[] = {CRGB::Blue, CRGB::Yellow, CRGB::Red}; // Couleurs des joueurs
+const CRGB COULEUR_BOOST = CRGB::Magenta;					     // Couleur des boosts
 
 /**
  * @brief Initialise les LEDs.
@@ -20,13 +21,13 @@ void initLeds(void);
  * 
  * @param players Le tableau des joueurs.
  */
-void allumerLedJoueurs(struct player players[NB_JOUEURS_MAX]);
+void affichageJeu(struct player players[NB_JOUEURS_MAX], int boosts[NOMBRE_BOOST]);
 
 /**
  * @brief Animation de victoire.
  * 
  * Cette fonction anime la victoire en effectuant une séquence de clignotements des LEDs.
  */
-void animVictoire(void);
+void animVictoire(int idGagnant);
 
 #endif

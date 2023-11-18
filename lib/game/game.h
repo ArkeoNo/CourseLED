@@ -6,6 +6,10 @@
 
 #define NOMBRE_TOURS 3
 #define NB_JOUEURS_MAX 3
+#define NOMBRE_BOOST 5
+#define PUISSANCE_BOOST 5
+
+#define PROBA_MAX_DOUBLER 0.8
 
 const int PIN_BP[] {2, 3, 4}; // Pins des bouttons
 
@@ -38,8 +42,27 @@ bool init_joueur(struct player *joueur, int id, int pos, int lap);
 void init_button(void);
 
 /**
- * @brief Routine d'interruption des bouttons.
+ * @brief Vérifie si un boutton a été pressé.
+ * 
+ * @param bp Un tableau contenant l'état des bouttons.
  */
 void button_pressed(int *bp);
+
+int getPremierJoueur(player players[]);
+
+/**
+ * @brief Spawn tous les boosts à une position aléatoire de la piste.
+ * 
+ * @param boosts Le tableau de boosts dans lequel le boost sera ajouté.
+ */
+void spawn_boost(int boosts[NOMBRE_BOOST]);
+
+/**
+ * Utilise un boost un joueur donné est positionné dessus puis en fait réaparaitre un de manière alétoire sur la piste.
+ * 
+ * @param joueur Le joueur pour lequel utiliser le boost.
+ * @param boosts Un tableau contenant les boosts disponibles.
+ */
+void use_boost(player *joueur, int boosts[NOMBRE_BOOST]);
 
 #endif
