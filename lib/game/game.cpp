@@ -51,11 +51,14 @@ void spawn_boost(int boosts[NOMBRE_BOOST]){
     }
 }
 
-void use_boost(player *joueur, int boosts[NOMBRE_BOOST]){
+void use_boost(player *joueur, int boosts[NOMBRE_BOOST], player players[NB_JOUEURS_MAX]){
     for(int i = 0; i < NOMBRE_BOOST; i++){
         if(joueur->pos == boosts[i]){
-            joueur->pos += PUISSANCE_BOOST;
-            boosts[i] = random(0, NUM_LEDS);
+            for(int j = 0; j < PUISSANCE_BOOST; j++){
+                joueur->pos++;
+                affichageJeu(players, boosts);
+            }
+        boosts[i] = random(0, NUM_LEDS);
         }
     }
 }

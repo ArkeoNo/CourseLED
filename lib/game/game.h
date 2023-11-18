@@ -9,7 +9,9 @@
 #define NOMBRE_BOOST 5
 #define PUISSANCE_BOOST 5
 
-#define PROBA_MAX_DOUBLER 0.8
+#define PROBA_MAX_DOUBLER 0.9
+
+#define PIN_BUZZER 9
 
 const int PIN_BP[] {2, 3, 4}; // Pins des bouttons
 
@@ -63,6 +65,6 @@ void spawn_boost(int boosts[NOMBRE_BOOST]);
  * @param joueur Le joueur pour lequel utiliser le boost.
  * @param boosts Un tableau contenant les boosts disponibles.
  */
-void use_boost(player *joueur, int boosts[NOMBRE_BOOST]);
+void use_boost(player *joueur, int boosts[NOMBRE_BOOST], player players[NB_JOUEURS_MAX]);
 
 #endif

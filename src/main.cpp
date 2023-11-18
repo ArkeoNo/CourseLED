@@ -8,6 +8,25 @@ struct player players[NB_JOUEURS_MAX];
 
 void setup() {
   Serial.begin(9600); //  init communication via port usb
+
+  // pinMode(PIN_BUZZER, OUTPUT); //  init pin buzzer
+  // analogWrite(PIN_BUZZER, 140);
+  // delay(400);
+  // analogWrite(PIN_BUZZER, 0);
+  
+  // tone(PIN_BUZZER, 440, 200);
+  // delay(1000);
+  // noTone(PIN_BUZZER);
+
+  delay(100);
+  tone(PIN_BUZZER, 349, 200);
+  delay(200);
+  tone(PIN_BUZZER, 392, 200);
+  delay(200);
+  tone(PIN_BUZZER, 440, 200);
+  delay(200);
+  noTone(8);
+
   
   /*Initialisation du jeu*/
   Serial.println("Initialisation du jeu...");
@@ -39,16 +58,29 @@ void loop() {
         int idPremier = getPremierJoueur(players); // Récupère l'id du premier joueur
         int ecartPremier = 0;  // Ecart à 0 par défaut
         if (idPremier != i) {
-          ecartPremier = players[idPremier].pos + players[idPremier].lap * NUM_LEDS - players[idPremier].pos - players[idPremier].lap * NUM_LEDS;
+          ecartPremier = players[idPremier].pos + players[idPremier].lap * NUM_LEDS - players[i].pos - players[i].lap * NUM_LEDS;
         }
         float nombreMinDoubler = 100 * PROBA_MAX_DOUBLER * (ecartPremier) / (NOMBRE_TOURS * NUM_LEDS);
         
+        if (idPremier != i) {
+          Serial.print("Joueur ");
+          Serial.print(i);
+          Serial.print(" : nombreAleatoire=");
+          Serial.print(nombreAleatoire);
+          Serial.print(",\tnombreMinDoubler=");
+          Serial.print(nombreMinDoubler);
+          Serial.print(",\tecartPremier=");
+          Serial.print(ecartPremier);
+          Serial.print(",\tx2=");
+          Serial.println(nombreAleatoire <= nombreMinDoubler);
+        }
+
         if (nombreAleatoire <= nombreMinDoubler) {
           players[i].pos += 2;
         } else {
           players[i].pos += 1;
         }
-        use_boost(&players[i], boosts);
+        use_boost(&players[i], boosts, players);
       }
 
       // Si le joueur a fini un tour, on incrémente son compteur de tours
