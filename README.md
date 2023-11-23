@@ -1,5 +1,6 @@
 # Course Led
-### _Projet DN Made 2 EDNA Nantes Arthur Ducroz_
+### _Projet DN Made 2 EDNA Nantes_ 
+Auteurs : Arthur Nogues, Samuel Deschamps, Arthur Ducroz
 
 ## Description du jeu
 
@@ -14,8 +15,6 @@
 - 1 Bandeau de leds ARGB
 - 2 à 3 boutons poussoirs
 - 1 buzzer piezo electrique 
-
-## Montage 
 
 ## Controle des leds
 Afin de controler le bandeau de leds, nous utilisons la librairie [FastLED](https://github.com/FastLED/FastLED). À partir de cette librairie, plusieurs procédures ont été créées afin de controler les leds pour le jeu.
